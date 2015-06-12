@@ -11,8 +11,8 @@ delta_segments_per_second                    100              # for deltas only 
                                                               # and use mm_per_line_segment
 
 
-# Arm solution configuration : Rotatable Delta robot. Translates mm positions into stepper positions
-arm_solution                                 rotatable_delta  # selects the delta arm solution
+# Arm solution configuration : Rotary Delta robot. Translates mm positions into stepper positions
+arm_solution                                    rotary_delta      # selects the rotary delta arm solution
 
 delta_e						131.636		  # End effector length
 delta_f						190.526		  # Base length
@@ -142,7 +142,7 @@ laser_module_enable                          false            # Whether to activ
 temperature_control.hotend.enable            true             # Whether to activate this ( "hotend" ) module at all.
                                                               # All configuration is ignored if false.
 temperature_control.hotend.thermistor_pin    0.23             # Pin for the thermistor to read
-temperature_control.hotend.heater_pin        2.7              # Pin that controls the heater
+temperature_control.hotend.heater_pin        1.25             # Pin that controls the heater  #2.7 on a SmoothieBoard
 temperature_control.hotend.thermistor        EPCOS100K        # see http://smoothieware.org/temperaturecontrol#toc5
 #temperature_control.hotend.beta             4066             # or set the beta value
 
@@ -251,16 +251,15 @@ gamma_trim                                   -61              # software trim fo
 
 # optional Z probe
 zprobe.enable                                false           # set to true to enable a zprobe
-zprobe.probe_pin                             1.28!^          # pin probe is attached to if NC remove the !
+zprobe.probe_pin                             1.27!^          # pin probe is attached to if NC remove the !
 zprobe.slow_feedrate                         5               # mm/sec probe feed rate
 #zprobe.debounce_count                       100             # set if noisy
 zprobe.fast_feedrate                         100             # move feedrate mm/sec
 zprobe.probe_height                          5               # how much above bed to start probe
-#gamma_min_endstop                           nc              # normally 1.28. Change to nc to prevent conflict,
 
 # associated with zprobe the leveling strategy to use
-#leveling-strategy.delta-calibration.enable   true            # basic delta calibration
-#leveling-strategy.delta-calibration.radius   100             # the probe radius
+leveling-strategy.delta-calibration.enable   true            # basic delta calibration
+leveling-strategy.delta-calibration.radius   100             # the probe radius
 
 # Pause button
 pause_button_enable                          true             #

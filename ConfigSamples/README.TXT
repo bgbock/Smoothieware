@@ -12,7 +12,7 @@ The full configs found in the ConfigSamples director include:
   Rostock or Kossel style linear delta bot using the most recent Smoothieboard.
 
 * FirePick.delta - This directory contains a sample config for a
-  FirePick Rotatable delta bot using a custom Smoothie compatible board, see http://delta.firepick.org
+  FirePick Rotary delta bot using a custom Smoothie compatible board, see http://delta.firepick.org
 
 * AzteegX5Mini - This directory contains a sample config file for using
   the Azteeg X5 Mini.
