@@ -263,13 +263,13 @@ zprobe.negative_direction		     true	     # set to true for RotaryDelta arm solu
 
 # associated with zprobe the leveling strategy to use
 leveling-strategy.ZGrid-leveling.enable         true	# The strategy must be enabled in the config as well as zprobe
-leveling-strategy.ZGrid-leveling.bed_x           60	# The bed size limits must be defined, in order for the module to calculate the calibration points
-leveling-strategy.ZGrid-leveling.bed_y           60
-leveling-strategy.ZGrid-leveling.bed_z           20	# Machine height, used to determine probe attachment point (bed_z / 2)
-leveling-strategy.ZGrid-leveling.bed_zero        true	# Configure for Machines with bed 0:0 at center of platform
-leveling-strategy.ZGrid-leveling.bed_circular    false	# Configure for Machines with circular beds
-leveling-strategy.ZGrid-leveling.rows           3       # X divisions (Default 5)
-leveling-strategy.ZGrid-leveling.cols           3       # Y divisions (Default 5)
+leveling-strategy.ZGrid-leveling.bed_x          90	# The bed size limits must be defined, in order for the module to calculate the calibration points
+leveling-strategy.ZGrid-leveling.bed_y          90
+leveling-strategy.ZGrid-leveling.bed_z          20	# Machine height, used to determine probe attachment point (bed_z / 2)
+leveling-strategy.ZGrid-leveling.center_zero    true	# Configure for Machines with bed 0:0 at center of platform
+leveling-strategy.ZGrid-leveling.bed_circular   false	# Configure for Machines with circular beds
+leveling-strategy.ZGrid-leveling.rows           5       # X divisions (Default 5)
+leveling-strategy.ZGrid-leveling.cols           5       # Y divisions (Default 5)
 leveling-strategy.ZGrid-leveling.probe_offsets  0,0,5	# The probe offset should be defined, default to zero offset
 leveling-strategy.ZGrid-leveling.wait_for_probe  false	# The machine can be told to wait for probe attachment and confirmation
 leveling-strategy.ZGrid-leveling.slow_feedrate	100	# Slow feedrate can be defined for probe positioning speed.  Note this is not Probing slow rate - it can be set to a fast speed if required.
