@@ -65,7 +65,7 @@ alpha_en_pin                                 0.4              # Pin for alpha en
 alpha_current                                1.5              # X stepper motor current
 alpha_max_rate                               3000.0           # mm/min
 
-beta_step_pin                                2.1              # Pin for beta stepper step signal
+beta_step_pin                                2.3 #2.1              # Pin for beta stepper step signal
 beta_dir_pin                                 0.11             # Pin for beta stepper direction
 beta_en_pin                                  0.10             # Pin for beta enable
 beta_current                                 1.5              # Y stepper motor current
@@ -223,14 +223,17 @@ alpha_min_endstop                            1.24^            #
 alpha_max_endstop                            nc               # add ! to invert pullup if switch is NO to ground
 alpha_homing_direction                       home_to_min      # Home up as the rotational delta has the min at the top!
 alpha_min                                    0                # The ‘0’ home position is some 60 degrees down from the min endstop
+alpha_limit_enable 			     true 	      # If set to true, the machine will stop an alpha endstop is hit
 beta_min_endstop                             1.26^            #
 beta_max_endstop                             nc               #
 beta_homing_direction                        home_to_min      #
 beta_min                                     0                #
+beta_limit_enable 			     true 	      # If set to true, the machine will stop a beta endstop is hit
 gamma_min_endstop                            1.28^            #
 gamma_max_endstop                            nc               #
 gamma_homing_direction                       home_to_min      #
 gamma_min                                    0                #
+gamma_limit_enable 			     true 	      # If set to true, the machine will stop a gamma endstops is hit
 
 alpha_fast_homing_rate_mm_s                  200              # homing feedrates in mm/second
 beta_fast_homing_rate_mm_s                   200              #
@@ -243,23 +246,33 @@ alpha_homing_retract_mm                      5                # retract/bounce d
 beta_homing_retract_mm                       5                #
 gamma_homing_retract_mm                      5                #
 
-alpha_trim                                   -61              # software trim for alpha stepper endstop (in mm)
-beta_trim                                    -61              # software trim for beta stepper endstop (in mm)
-gamma_trim                                   -61              # software trim for gamma stepper endstop (in mm)
+alpha_trim                                   -65              # software trim for alpha stepper endstop (in mm)
+beta_trim                                    -65              # software trim for beta stepper endstop (in mm)
+gamma_trim                                   -65              # software trim for gamma stepper endstop (in mm)
 
 #endstop_debounce_count                       100             # uncomment if you get noise on your endstops
 
 # optional Z probe
-zprobe.enable                                false           # set to true to enable a zprobe
+zprobe.enable                                true            # set to true to enable a zprobe
 zprobe.probe_pin                             1.27!^          # pin probe is attached to if NC remove the !
 zprobe.slow_feedrate                         5               # mm/sec probe feed rate
 #zprobe.debounce_count                       100             # set if noisy
 zprobe.fast_feedrate                         100             # move feedrate mm/sec
 zprobe.probe_height                          5               # how much above bed to start probe
+zprobe.negative_direction		     true	     # set to true for RotaryDelta arm solutions, false for all others
 
 # associated with zprobe the leveling strategy to use
-leveling-strategy.delta-calibration.enable   true            # basic delta calibration
-leveling-strategy.delta-calibration.radius   100             # the probe radius
+leveling-strategy.ZGrid-leveling.enable         true	# The strategy must be enabled in the config as well as zprobe
+leveling-strategy.ZGrid-leveling.bed_x           60	# The bed size limits must be defined, in order for the module to calculate the calibration points
+leveling-strategy.ZGrid-leveling.bed_y           60
+leveling-strategy.ZGrid-leveling.bed_z           20	# Machine height, used to determine probe attachment point (bed_z / 2)
+leveling-strategy.ZGrid-leveling.bed_zero        true	# Configure for Machines with bed 0:0 at center of platform
+leveling-strategy.ZGrid-leveling.bed_circular    false	# Configure for Machines with circular beds
+leveling-strategy.ZGrid-leveling.rows           3       # X divisions (Default 5)
+leveling-strategy.ZGrid-leveling.cols           3       # Y divisions (Default 5)
+leveling-strategy.ZGrid-leveling.probe_offsets  0,0,5	# The probe offset should be defined, default to zero offset
+leveling-strategy.ZGrid-leveling.wait_for_probe  false	# The machine can be told to wait for probe attachment and confirmation
+leveling-strategy.ZGrid-leveling.slow_feedrate	100	# Slow feedrate can be defined for probe positioning speed.  Note this is not Probing slow rate - it can be set to a fast speed if required.
 
 # Pause button
 pause_button_enable                          true             #

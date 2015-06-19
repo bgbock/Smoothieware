@@ -43,6 +43,9 @@
 // from endstop section
 #define delta_homing_checksum    CHECKSUM("delta_homing")
 
+// allow zprobing in the opposite direction, needed for RotaryDelta arm solutions
+#define negative_direction_checksum    CHECKSUM("negative_direction")
+
 #define X_AXIS 0
 #define Y_AXIS 1
 #define Z_AXIS 2
@@ -111,7 +114,14 @@ void ZProbe::on_config_reload(void *argument)
     }
 
     // need to know if we need to use delta kinematics for homing
-    this->is_delta = THEKERNEL->config->value(delta_homing_checksum)->by_default(false)->as_bool();
+    this->is_delta              = THEKERNEL->config->value(delta_homing_checksum)->by_default(false)->as_bool();
+    // allow for negative direction probing as required by the RotaryDelta arm solution
+    this->is_negative_direction = THEKERNEL->config->value(zprobe_checksum, negative_direction_checksum)->by_default(false)->as_bool();
+
+    if (this->is_negative_direction) 
+	THEKERNEL->streams->printf("ZProbe negative direction\n");
+    else
+	THEKERNEL->streams->printf("ZProbe normal direction\n");
 
     // default for backwards compatibility add DeltaCalibrationStrategy if a delta
     // will be deprecated
@@ -177,14 +187,15 @@ bool ZProbe::run_probe(int& steps, bool fast)
     // Enable the motors
     THEKERNEL->stepper->turn_enable_pins_on();
     this->current_feedrate = (fast ? this->fast_feedrate : this->slow_feedrate) * Z_STEPS_PER_MM; // steps/sec
-    float maxz= this->max_z*2;
+    
+    float maxz= this->max_z*2;  //probe down
 
     // move Z down
-    STEPPER[Z_AXIS]->move(true, maxz * Z_STEPS_PER_MM, 0); // always probes down, no more than 2*maxz
+    STEPPER[Z_AXIS]->move(!(this->is_negative_direction), maxz * Z_STEPS_PER_MM, 0); // probes no more than 2*maxz
     if(this->is_delta) {
         // for delta need to move all three actuators
-        STEPPER[X_AXIS]->move(true, maxz * STEPS_PER_MM(X_AXIS), 0);
-        STEPPER[Y_AXIS]->move(true, maxz * STEPS_PER_MM(Y_AXIS), 0);
+        STEPPER[X_AXIS]->move(!(this->is_negative_direction), maxz * STEPS_PER_MM(X_AXIS), 0);
+        STEPPER[Y_AXIS]->move(!(this->is_negative_direction), maxz * STEPS_PER_MM(Y_AXIS), 0);
     }
 
     // start acceleration processing
@@ -202,6 +213,10 @@ bool ZProbe::return_probe(int steps)
     if(fr > this->fast_feedrate) fr= this->fast_feedrate; // unless that is greater than fast feedrate
     this->current_feedrate = fr * Z_STEPS_PER_MM; // feedrate in steps/sec
     bool dir= steps < 0;
+
+    if (this->is_negative_direction)
+    	dir =! dir;
+
     steps= abs(steps);
 
     STEPPER[Z_AXIS]->move(dir, steps, 0);
@@ -264,7 +279,7 @@ void ZProbe::on_gcode_received(void *argument)
 
             int steps;
             if(run_probe(steps)) {
-                gcode->stream->printf("Z:%1.4f C:%d\n", steps / Z_STEPS_PER_MM, steps);
+                gcode->stream->printf("Z:%1.4f C:%d Direction:%d\n", steps / Z_STEPS_PER_MM, steps, this->is_negative_direction);
                 // move back to where it started, unless a Z is specified
                 if(gcode->has_letter('Z')) {
                     // set Z to the specified value, and leave probe where it is

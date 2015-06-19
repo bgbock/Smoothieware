@@ -57,6 +57,7 @@ private:
     volatile struct {
         volatile bool running:1;
         bool is_delta:1;
+        bool is_negative_direction:1;
     };
 
     Pin pin;

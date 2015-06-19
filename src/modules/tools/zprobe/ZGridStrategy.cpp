@@ -311,7 +311,7 @@ bool ZGridStrategy::handleGcode(Gcode *gcode)
             }
             return true;
 
-/*          case 376: { // Check grid value calculations: For debug only.
+          case 376: { // Check grid value calculations: For debug only.
                 float target[3];
 
                 for(char letter = 'X'; letter <= 'Z'; letter++) {
@@ -323,7 +323,7 @@ bool ZGridStrategy::handleGcode(Gcode *gcode)
 
             }
             return true;
-*/
+
             case 565: { // M565: Set Z probe offsets
                 float x= 0, y= 0, z= 0;
                 if(gcode->has_letter('X')) x = gcode->get_value('X');
