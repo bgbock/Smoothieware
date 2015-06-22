@@ -2,10 +2,10 @@
 # Robot module configurations : general handling of movement G-codes and slicing into moves
 default_feed_rate                            4000             # Default rate ( mm/minute ) for G1/G2/G3 moves
 default_seek_rate                            4000             # Default rate ( mm/minute ) for G0 moves
-mm_per_arc_segment                           0.5              # Arcs are cut into segments ( lines ), this is the length for
+mm_per_arc_segment                           0.01 #0.5            # Arcs are cut into segments ( lines ), this is the length for
                                                               # these segments.  Smaller values mean more resolution,
                                                               # higher values mean faster computation
-#mm_per_line_segment                         0.5              # Lines can be cut into segments ( not useful with cartesian
+mm_per_line_segment                          0.01 #0.5             # Lines can be cut into segments ( not useful with cartesian
                                                               # coordinates robots ).
 delta_segments_per_second                    100              # for deltas only same as in Marlin/Delta, set to 0 to disable
                                                               # and use mm_per_line_segment
@@ -49,9 +49,12 @@ delta_printable_radius			        100.0		  # Print surface diameter/2 minus unrea
 #    For a 1.8 degree stepper motor and an a4988   driver set for 16 microsteps = (200 * 16 * 9.52226215)/360 =  84.6423302
 #    For a 0.9 degree stepper motor and an drv8825 driver set for 32 microsteps = (400 * 32 * 9.52226215)/360 = 338.5693208
 #    For a 1.8 degree stepper motor and an drv8825 driver set for 32 microsteps = (200 * 32 * 9.52226215)/360 = 169.2846604
-alpha_steps_per_mm                            338.5693208      # Steps per mm for alpha stepper
-beta_steps_per_mm                             338.5693208      # Steps per mm for beta stepper
-gamma_steps_per_mm                            338.5693208      # Steps per mm for gamma stepper
+#alpha_steps_per_mm                            338.5693208      # Steps per mm for alpha stepper
+#beta_steps_per_mm                             338.5693208      # Steps per mm for beta stepper
+#gamma_steps_per_mm                            338.5693208      # Steps per mm for gamma stepper
+alpha_steps_per_mm                            304.7123888     # Steps per mm for alpha stepper
+beta_steps_per_mm                             304.7123888      # Steps per mm for beta stepper
+gamma_steps_per_mm                            304.7123888      # Steps per mm for gamma stepper
 
 # Planner module configuration : Look-ahead and acceleration configuration
 planner_queue_size                           32               # DO NOT CHANGE THIS UNLESS YOU KNOW EXACTLY WHAT YOU ARE DOING
@@ -283,8 +286,8 @@ leveling-strategy.ZGrid-leveling.bed_y          90
 leveling-strategy.ZGrid-leveling.bed_z          0	# Machine height, used to determine probe attachment point (bed_z / 2)
 leveling-strategy.ZGrid-leveling.center_zero    true	# Configure for Machines with bed 0:0 at center of platform
 leveling-strategy.ZGrid-leveling.bed_circular   false	# Configure for Machines with circular beds
-leveling-strategy.ZGrid-leveling.rows           2       # X divisions (Default 5)
-leveling-strategy.ZGrid-leveling.cols           2       # Y divisions (Default 5)
+leveling-strategy.ZGrid-leveling.rows           3       # X divisions (Default 5)
+leveling-strategy.ZGrid-leveling.cols           3       # Y divisions (Default 5)
 leveling-strategy.ZGrid-leveling.probe_offsets  0,0,5	# The probe offset should be defined, default to zero offset
 leveling-strategy.ZGrid-leveling.wait_for_probe  false	# The machine can be told to wait for probe attachment and confirmation
 leveling-strategy.ZGrid-leveling.slow_feedrate	300	# Slow feedrate can be defined for probe positioning speed.  Note this is not Probing slow rate - it can be set to a fast speed if required.
