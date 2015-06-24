@@ -142,8 +142,8 @@ void RotaryDeltaSolution::cartesian_to_actuator( float cartesian_mm[], float act
 
 	//Code from Trossen Robotics tutorial, note we put the X axis at the back and not the front of the robot.
 
-	float x0 = cartesian_mm[X_AXIS];
-	float y0 = cartesian_mm[Y_AXIS];
+	float x0 = -cartesian_mm[X_AXIS];
+	float y0 = -cartesian_mm[Y_AXIS];
 	float z_with_offset = cartesian_mm[Z_AXIS] + z_calc_offset; //The delta calculation below places zero at the top.  Subtract the Z offset to make zero at the bottom.
 
 	int status =              delta_calcAngleYZ(x0,                    y0,                  z_with_offset, alpha_theta);
