@@ -42,37 +42,70 @@ Press reset on your SmoothieBoard or MotionBaord (This is the FirePick derivate 
 ==Z-Probing & Calibrating
 The config file is already configured for Z-Probing.
 
-(1) Attach the Z-Probe between 1.27 and GND (Normally open, closed when the probe is activated) 
-Note that Smoothie requires you to define its trigger point in terms of and offset of X/Y/Z from the origin (0/0/0), when we have a tool head that is a Z-Probe, I will integrate that into the config file, in the mean time, you will to update leveling-strategy.ZGrid-leveling.probe_ofsets parameter, e.g.
+(1) Attach the Z-Probe between 1.27 and GND (Normally open, closed when the probe is activated)
+
+Note that Smoothie requires you to define its trigger point in terms of an offset of X/Y/Z from the origin (0/0/0), when we have a tool head that is a Z-Probe, I will integrate that into the config file, in the mean time, you will need to update the leveling-strategy.ZGrid-leveling.probe_ofsets X,Y,Z parameter, e.g.
 {{{
 leveling-strategy.ZGrid-leveling.probe_ofsets 29,7,1.1
 }}}
-(2) Issue a G32 (Run and automated Z-Probe, noting that I have already defined the Z-Probe parameters in the config)
+(2) Issue the automated Z-Probe command
+{{{
+G32
+}}}
 
-(3) Place a engineers steel ruler along the X-axis so Y=0 on the bed and the centre of the tool you have in the ATD is directly about 100mm
+(3) Place an engineers steel ruler along the X-axis so Y=0 on the bed and the centre of the tool you have in the ATD is directly above 100mm on the ruler
 
-(4) Issue a G0X100 and see how close to 200mm it gets to (remember that X=-100 is 0 on the ruler, X=0 is 100 on the ruler and X=+100 is 200 on the ruler) and note the difference.
+(4) Issue a 
+{{{
+G0X100
+}}}
+command and see how close to 200mm it gets to (remember that X=-100 is 0 on the ruler, X=0 is 100 on the ruler and X=+100 is 200 on the ruler) and note the difference.
 
-(5) Issue a G0X0 and check that it returns to 100mm on the ruler
+(5) Issue a 
+{{{
+G0X0
+}}}
+and check that it returns to 100mm on the ruler
 
-(6) Issue a G0X-100 and measure the deviation from 0mm on the ruler.
+(6) Issue a 
+{{{
+G0X-100
+}}}
+and measure the deviation from 0mm on the ruler.
 
 (7) The deviations in steps (4) and (6) should be the same; if not, then you need to re-align the arm supports so they are the same (shims, etc)
 NOTE: you will observe that as a result of step (2), your FPD should be tracking much closer to horizontal on the Z Plane (i.e. X & Y movements, in this case, near Z=0), but we are not there yet.
 
 (8) Using the difference in (4) and (6):
-      (a) issue a M92 and read the values for X/Y/Z as these are the steps/mm Smoothie uses to drive the FPD, these should all be the same value. e.g. M92 returns M92X338Y338Z338 (plus other things we don’t care about)
-      (b) Determine the ratio of the difference as 100/difference measured e.g. 100/104=0.961538
-      (c) Calculate the what the steps/mm should be as the value from (9a) multiplied by the (9b) ratio e.g.  338*0.961538=325
-      (d) issue M92X<value from (9c)>Y<value from (9c)>Z<value from (9c)>, e.g. M92X325Y325Z325
-
+(a) issue an
+{{{
+M92
+}}}
+and read the values for X/Y/Z as these are the steps/mm Smoothie uses to drive the FirePick's Rotary Delta arm solution, these should all be the same value. e.g. M92 returns M92X338Y338Z338 (plus other things we don’t care about)
+(b) Determine the ratio of the difference as 100/difference measured e.g. 100/104=0.961538
+(c) Calculate the what the steps/mm should be as the value from (9a) multiplied by the (9b) ratio e.g.  338*0.961538=325
+(d) issue and
+{{{
+M92X<value from (9c)>Y<value from (9c)>Z<value from (9c)>
+}}}
+ e.g. 
+{{{
+ M92X325Y325Z325
+}}}
 (9) Repeat this process from (2) until you are happy with your set up (it may take several iterations as the approximation in step (8) needs to be iteratively refined)
 
-(10) Issue a M30 Z-Grid command to delete any previous Z-Grid compensation file off your SD card in the MotionBoard
+(10) Issue a 
+{{{
+M30
+}}}
+Z-Grid command to delete any previous Z-Grid compensation file off your SD card in the MotionBoard
 
-(11) Issue a M374 (This saves the deviations in a Z-Grid file of the SD card on the MotionBoard, you need to issue a M375 each time you start FPD to read in the compensation )
+(11) Issue a 
+{{{
+M374
+}}}
+(This saves the deviations in a Z-Grid file of the SD card on the MotionBoard, you need to issue a M375 each time you start FPD to read in the compensation )
 
 Now, when ever you start the FPD, issue a M375 and this loads you compensation file from the SD card and applies the necessary corrections to Smoothie, and then away you go.
 
 Using the above method I an getting rather good 3D printing, but I notice that downward movement in the Z axis still exhibits an increasing outward deviation as Z moves from say 100mm down to 0mm the further out the head is from X/Y = 0, i.e. towards the out parts of the bed, though this is substantially reduced by the above process, but is not quite perfect.
-
