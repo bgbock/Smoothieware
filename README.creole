@@ -104,8 +104,15 @@ Z-Grid command to delete any previous Z-Grid compensation file off your SD card 
 {{{
 M374
 }}}
-(This saves the deviations in a Z-Grid file of the SD card on the MotionBoard, you need to issue a M375 each time you start FPD to read in the compensation )
+which saves the deviations in a 
+{{{
+ZGrid
+}}}
+file on the SD card on the MotionBoard/Smoothie Board.
 
 Now, when ever you start the FPD, issue a M375 and this loads you compensation file from the SD card and applies the necessary corrections to Smoothie, and then away you go.
 
 Using the above method I an getting rather good 3D printing, but I notice that downward movement in the Z axis still exhibits an increasing outward deviation as Z moves from say 100mm down to 0mm the further out the head is from X/Y = 0, i.e. towards the out parts of the bed, though this is substantially reduced by the above process, but is not quite perfect.
+
+==OpenPnP
+I am well advanced on the changes to the config file to support OpenPnP and hope to have those changes tested and committed before the end of July.
