@@ -58,7 +58,7 @@ G32
 
 If it does something very strange, for example the Z-Probe misses the bed, press the RESET button on your MotionBoard or SmoothieBoard and then figure out mechanically what is wrong.
 
-(3) Place an engineers steel ruler along the X-axis so Y=0 on the bed and the centre of the tool you have in the ATD is directly above 100mm on the ruler
+(3) Place an engineers steel ruler along the X-axis so Y=0 on the bed and the centre of the tool you have in the ATD is directly above 100mm on the ruler.
 
 (4) Issue a 
 {{{
@@ -70,7 +70,7 @@ command and see how close to 200mm it gets to (remember that X=-100 is 0 on the 
 {{{
 G0X0
 }}}
-and check that it returns to 100mm on the ruler
+and check that it returns to 100mm on the ruler.
 
 (6) Issue a 
 {{{
@@ -86,7 +86,7 @@ NOTE: you will observe that as a result of step (2), your FPD should be tracking
 {{{
 M92
 }}}
-and read the values for X/Y/Z as these are the steps/mm Smoothie uses to drive the FirePick's Rotary Delta arm solution, these should all be the same value. e.g. M92 returns M92X338Y338Z338 (plus other things we don’t care about)
+and read the values for X/Y/Z as these are the steps/mm Smoothie uses to drive the FirePick's Rotary Delta arm solution, these should all be the same value. e.g. M92 returns M92X338Y338Z338 (plus other things we don’t care about).
 
 (b) Determine the ratio of the difference as 100/difference measured e.g. 100/104=0.961538
 
@@ -100,13 +100,13 @@ M92X<value from (9c)>Y<value from (9c)>Z<value from (9c)>
 {{{
  M92X325Y325Z325
 }}}
-(9) Repeat this process from (2) until you are happy with your set up (it may take several iterations as the approximation in step (8) needs to be iteratively refined)
+(9) Repeat this process from (2) until you are happy with your set up (it may take several iterations as the approximation in step (8) needs to be iteratively refined).
 
 (10) Issue a 
 {{{
 M30 ZGrid
 }}}
-command to delete any previous Z-Grid compensation file off your SD card in the MotionBoard
+command to delete any previous ZGrid compensation file off your SD card in the MotionBoard.
 
 (11) Issue a 
 {{{
