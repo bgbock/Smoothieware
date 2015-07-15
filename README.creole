@@ -55,6 +55,8 @@ leveling-strategy.ZGrid-leveling.probe_ofsets 29,7,1.1
 G32
 }}}
 
+If it does something very strange, for example the Z-Probe misses the bed, press the RESET button on your MotionBoard or SmoothieBoard and then figure out mechanically what is wrong.
+
 (3) Place an engineers steel ruler along the X-axis so Y=0 on the bed and the centre of the tool you have in the ATD is directly above 100mm on the ruler
 
 (4) Issue a 
