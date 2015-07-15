@@ -82,8 +82,11 @@ NOTE: you will observe that as a result of step (2), your FPD should be tracking
 M92
 }}}
 and read the values for X/Y/Z as these are the steps/mm Smoothie uses to drive the FirePick's Rotary Delta arm solution, these should all be the same value. e.g. M92 returns M92X338Y338Z338 (plus other things we don’t care about)
+
 (b) Determine the ratio of the difference as 100/difference measured e.g. 100/104=0.961538
+
 (c) Calculate the what the steps/mm should be as the value from (9a) multiplied by the (9b) ratio e.g.  338*0.961538=325
+
 (d) issue and
 {{{
 M92X<value from (9c)>Y<value from (9c)>Z<value from (9c)>
