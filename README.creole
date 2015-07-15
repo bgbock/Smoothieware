@@ -40,7 +40,7 @@ Onto a blank FAT32 formatted SD card, copy the following files
 Firmware/firmware.bin
 ConfigSamples/Firepick.delta/config
 }}}
-Press reset on your SmoothieBoard or MotionBaord (This is the FirePick derivate of the Smoothieware board and is recommended for you FirePick delta) and wait a few moments while the new firmware is loaded into flash memory, and then executed.
+Press reset on your SmoothieBoard or MotionBoard (This is the FirePick derivate of the Smoothieware board and is recommended for you FirePick delta) and wait a few moments while the new firmware is loaded into flash memory, and then executed.
 
 ==Z-Probing & Calibrating
 The config file is already configured for Z-Probing.
