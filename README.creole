@@ -14,6 +14,8 @@ These are the quick steps to get Smoothie dependencies installed on your compute
 ** Linux: linux_install
 * You can then run the BuildShell script which will be created during the install to properly configure the PATH environment variable to point to the required version of GCC for ARM which was just installed on your machine.  You may want to edit this script to further customize your development environment.
 
+NOTE: all commands are case-sensitive 
+
 ==Building Smoothie
 From a shell, switch into the root Smoothie project directory and run:
 {{{
@@ -99,9 +101,9 @@ M92X<value from (9c)>Y<value from (9c)>Z<value from (9c)>
 
 (10) Issue a 
 {{{
-M30
+M30 ZGrid
 }}}
-Z-Grid command to delete any previous Z-Grid compensation file off your SD card in the MotionBoard
+command to delete any previous Z-Grid compensation file off your SD card in the MotionBoard
 
 (11) Issue a 
 {{{
