@@ -17,8 +17,9 @@ These are the quick steps to get Smoothie dependencies installed on your compute
 NOTE: all commands are case-sensitive 
 
 ==Building Smoothie
-From a shell, switch into the root Smoothie project directory and run:
+From a shell, you need to start a "BuildShell", so go to the root Smoothie project directory and run:
 {{{
+./BuildShell
 make clean
 make all
 }}}
