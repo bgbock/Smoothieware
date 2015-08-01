@@ -127,9 +127,11 @@ There is currently an issue where the Thermistors are not connected to the VREFP
 Here is a low cost fix to get you started on 3D printing.
 
 First, here is the issue:
+
 {{Thermistor-fix\EAT001_problem.jpg|On the EAT001 board, the thermistor no connected to VREFP on the LPC1769}}
 
 The fix is to remove R8 and instead wire R8 to the VREFP on the MotionBoard.
+
 {{Thermistor-fix\EAT001_pcb.JPB|Here is where R8 normally resides on the back of the EAT001 PCB}}
 {{Thermistor-fix\Resistor.JPG|Remove R8 and solder two wires to it, then cover in heat-shrink to protect it}}
 {{Thermistor-fix\closeup_of_modified_EAT001.JPG|This is how the EAT001 now looks with R8 removed and one end routed to the AIN of the EAT001 PCB, so the other can got to the MotionBoard}}
