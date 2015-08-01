@@ -134,20 +134,25 @@ The fix is to remove R8 and instead wire R8 to the VREFP on the MotionBoard.
 
 {{Thermistor-fix\EAT001_pcb.JPG|Here is where R8 normally resides on the back of the EAT001 PCB}}
 
+Remove R8 and solder two wires to it, then cover in heat-shrink to protect it
 
 {{Thermistor-fix\Resistor.JPG|Remove R8 and solder two wires to it, then cover in heat-shrink to protect it}}
 
+This is how the EAT001 now looks with R8 removed and one end routed to the AIN of the EAT001 PCB, so the other can got to the MotionBoard
 
 {{Thermistor-fix\closeup_of_modified_EAT001.JPG|This is how the EAT001 now looks with R8 removed and one end routed to the AIN of the EAT001 PCB, so the other can got to the MotionBoard}}
 
+Now we need to repalce the two pin connector with a 3 pin connector so we can easily get at the "VREF" which we will wire to VREFP on the LPC1769
 
 {{Thermistor-fix\Replace_Connector.JPG|Now we need to repalce the two pin connector with a 3 pin connector so we can easily get at the "VREF" which we will wire to VREFP on the LPC1769}}
 
+Now we need to put a wire between the VREF pin and the AREFP on the MotionBoard PCB
 
 {{Thermistor-fix\Add_Wire_Link.JPG|Now we need to put a wire between the VREF pin and the AREFP on the MotionBoard PCB}}
 
+And here is where we connected the other end of the 4k7 wire to AREF which is really VREFP
 
-{{Thermistor-fix\IMG_6814.JPG|ANd here is where we connected the other end of the 4k7 wire to AREF which is really VREFP}}
+{{Thermistor-fix\IMG_6814.JPG|And here is where we connected the other end of the 4k7 wire to AREF which is really VREFP}}
 
 Now we get the correct readings!!
 
