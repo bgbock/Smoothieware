@@ -126,7 +126,7 @@ There is currently an issue where the Thermistors are not connected to the VREFP
 
 Here is a low cost fix to get you started on 3D printing.
 
-First, here is the issue:
+First, here is the issue with the way the Thermistors are wired on the EAT001 tool board:
 
 {{Thermistor-fix\EAT001_problem.jpg|On the EAT001 board, the thermistor no connected to VREFP on the LPC1769}}
 
