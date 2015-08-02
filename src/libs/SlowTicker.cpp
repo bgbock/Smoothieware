@@ -83,8 +83,9 @@ void SlowTicker::tick(){
 
     // Enter MRI mode if the ISP button is pressed
     // TODO: This should have it's own module
-    if (ispbtn.get() == 0)
-        __debugbreak();
+//Commented out as the MotionBoard re-uses this pin
+//    if (ispbtn.get() == 0)
+//        __debugbreak();
 
 }
 
