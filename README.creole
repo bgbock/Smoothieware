@@ -156,5 +156,8 @@ And here is where we connected the other end of the 4k7 wire to AREF which is re
 
 Now we get the correct readings!!
 
+NOTE: Make sure you either have a jumper shorting the EPO pin, or an actual Emergency Power Off switch installed or the motors and hot-end / heated bed will not turn on.
+The EPO 2 pin socket is on the EMC02 immediately below the Ethernet port on the MotionBoard.
+
 ==OpenPnP
 I am well advanced on the changes to the config file to support OpenPnP and hope to have those changes tested and committed before the end of July.
