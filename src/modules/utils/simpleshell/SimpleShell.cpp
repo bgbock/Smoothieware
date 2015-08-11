@@ -168,7 +168,7 @@ void SimpleShell::on_gcode_received(void *argument)
             gcode->mark_as_taken();
             rm_command("/sd/" + args, gcode->stream);
 
-        } else if (gcode->m == 105) { // Marlin style version command
+        } else if (gcode->m == 115) { // Marlin style version command
             gcode->mark_as_taken();
             firmware_version_and_capabilities(args, gcode->stream);
 
