@@ -161,6 +161,7 @@ The EPO 2 pin socket is on the EMC02 immediately below the Ethernet port on the 
 
 ==OpenPnP
 Premilinary support for OpenPnP has been added.
+
 (1) A sample config file is provided
 {{{
 ConfileSamples/FirePick.delta/config_OpenPnP
@@ -173,5 +174,6 @@ config
 {{{
 Firmware/firmware.bin
 }}}
-Note: I hae hard coded the PROTOCOL_VERSION to 0.1 for the mean time.
-Note: You may need to adjust OpenPnP to recognise the format of the <105 command.
+Note: I have hard coded the PROTOCOL_VERSION to 0.1 for the mean time.
+
+Note: You may need to adjust OpenPnP to recognise the format of the M105 command.
