@@ -46,6 +46,7 @@ private:
     static void calc_thermistor_command( string parameters, StreamOutput *stream);
     static void switch_command(string parameters, StreamOutput *stream );
     static void mem_command(string parameters, StreamOutput *stream );
+    static void firmware_version_and_capabilities( string parameters, StreamOutput *stream);
 
     static void net_command( string parameters, StreamOutput *stream);
 

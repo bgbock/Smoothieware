@@ -168,6 +168,10 @@ void SimpleShell::on_gcode_received(void *argument)
             gcode->mark_as_taken();
             rm_command("/sd/" + args, gcode->stream);
 
+        } else if (gcode->m == 105) { // Marlin style version command
+            gcode->mark_as_taken();
+            firmware_version_and_capabilities(args, gcode->stream);
+
         } else if(gcode->m == 501) { // load config override
             gcode->mark_as_taken();
             if(args.empty()) {
@@ -519,6 +523,15 @@ void SimpleShell::net_command( string parameters, StreamOutput *stream)
     } else {
         stream->printf("No network detected\n");
     }
+}
+
+// print out build version
+void SimpleShell::firmware_version_and_capabilities( string parameters, StreamOutput *stream)
+{
+    Version vers;
+    uint32_t dev = getDeviceType();
+    const char *mcu = (dev & 0x00100000) ? "LPC1769" : "LPC1768";
+    stream->printf("Protocol_Version: 0.1 Firmware_name: %s, Build_Date: %s, MCU: %s, System_Clock: %ldMHz\r\n", vers.get_build(), vers.get_build_date(), mcu, SystemCoreClock / 1000000);
 }
 
 // print out build version
