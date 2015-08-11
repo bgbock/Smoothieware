@@ -176,4 +176,4 @@ Firmware/firmware.bin
 }}}
 Note: I have hard coded the PROTOCOL_VERSION to 0.1 for the mean time.
 
-Note: You may need to adjust OpenPnP to recognise the format of the M105 command.
+
