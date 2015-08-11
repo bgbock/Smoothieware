@@ -160,4 +160,18 @@ NOTE: Make sure you either have a jumper shorting the EPO pin, or an actual Emer
 The EPO 2 pin socket is on the EMC02 immediately below the Ethernet port on the MotionBoard.
 
 ==OpenPnP
-I am well advanced on the changes to the config file to support OpenPnP and hope to have those changes tested and committed before the end of July.
+Premilinary support for OpenPnP has been added.
+(1) A sample config file is provided
+{{{
+ConfileSamples/FirePick.delta/config_OpenPnP
+}}}
+Simply copy this to your SD card and rename to
+{{{
+config
+}}}
+(2) The firmware has been updated to support this, copy the following file to your SD card:
+{{{
+Firmware/firmware.bin
+}}}
+Note: I hae hard coded the PROTOCOL_VERSION to 0.1 for the mean time.
+Note: You may need to adjust OpenPnP to recognise the format of the <105 command.
