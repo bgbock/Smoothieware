@@ -176,4 +176,18 @@ Firmware/firmware.bin
 }}}
 Note: I have hard coded the PROTOCOL_VERSION to 0.1 for the mean time.
 
-
+Also, when you are following the openPnP instructions, here are the sample settings for the downward looking camera used by the FirePick Delta hardware:
+{{{
+<cameras>
+<camera class="org.openpnp.machine.reference.camera.OpenCvCamera" id="d66faf53-05e1-4629-baae-b614c5ed8320" name="C1" looking="Down" rotation="90.0" device-index="0">
+<units-per-pixel units="Millimeters" x="0.023" y="0.023" z="0.0" rotation="0.0"/>
+<vision-provider class="org.openpnp.machine.reference.vision.OpenCvVisionProvider"/>
+<head-offsets units="Millimeters" x="0.0" y="-32.0" z="-20.0" rotation="0.0"/>
+</camera>
+</cameras>
+}}}
+And also to use the correct Smoothie driver:
+{{{
+<driver class="org.firepick.driver.SmoothieDriver" port-name="/dev/ttyACM0" baud="115200" feed-rate-mm-per-minute="5000.0"/>
+}}}
+Noting that you may need to change the port to suit your platform.  This works on Ubuntu.
