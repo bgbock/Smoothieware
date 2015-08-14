@@ -40,6 +40,8 @@ Onto a blank FAT32 formatted SD card, copy the following files
 Firmware/firmware.bin
 ConfigSamples/Firepick.delta/config
 }}}
+Now you may need to edit the config file and change the parameters if you are not using DRV8825 at 32 microsteps and 0.9 degree (400 steps per revolution) stepper motors.
+Read through the config file, the instructions on what to do are already in there.
 Press reset on your SmoothieBoard or MotionBoard (This is the FirePick derivate of the Smoothieware board and is recommended for you FirePick delta) and wait a few moments while the new firmware is loaded into flash memory, and then executed.
 
 ==Z-Probing & Calibrating
