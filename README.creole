@@ -47,11 +47,41 @@ Press reset on your SmoothieBoard or MotionBoard (This is the FirePick derivate 
 ==Z-Probing & Calibrating
 The config file is already configured for Z-Probing.
 
-(1) Attach the Z-Probe between 1.27 and GND (Normally open, closed when the probe is activated)
+(1) Attach the Z-Probe between 1.28 and GND (Normally open, closed when the probe is activated) (Check the config file specifies 1.28 and not 1.27)
 
-Note that Smoothie requires you to define its trigger point in terms of an offset of X/Y/Z from the origin (0/0/0), when we have a tool head that is a Z-Probe, I will integrate that into the config file, in the mean time, you will need to update the leveling-strategy.ZGrid-leveling.probe_ofsets X,Y,Z parameter, e.g.
+Wait, I don’t have a Z-Probe!  Well lets make one.
+
+Probably the simplest one is to purchase a inductive probe, and use the lid of a tin can.  Take the flat lid of a tin can and cut it into a triangle the same size as the top of the 3D printer tool.  The drill a hole through the very centre and mount the inductive probe so it is as far below the tin lid as possible. 
+
+Note: The probe I used was this one http://www.aliexpress.com/item/Inductive-Proximity-Sensor-Detection-Switch-LJ12A3-4-Z-BY-12MM-3-wire-Normal-Open-TK0372/1924491300.html 
+
+Using you favourite interface (I used Pronterface) and the 3D Printing head supplied with the FirePick, “Home” the unit and then jog the head down the Z-Axis until it just touches the glass covering the metal bed.  You should use the 0.1mm to get it so the tip exactly touches the glass.
+
+Now carefully rotate the 3D print head so it is no longer held in place by the magnets and gently remove this and replace with the temporary Z-Probe you just made.
+
+At this point the LED on the top of the Z-Probe should be out and the Z-Probe tip should be able the glass as it is shorter that the 3D print head.
+
+Issue a 
 {{{
-leveling-strategy.ZGrid-leveling.probe_ofsets 29,7,1.1
+M114
+}}}
+and note the Z height (This is the ‘zero’ height of the 3D print head.
+
+Now jog the probe downwards using 0.1mm each time until the LED on the top of the Z-probe lights up.
+
+Job up and down a few times so you exactly determine the height the LED lights.
+
+Again issue a
+{{{
+M114
+}}}
+and note the Z height.
+
+The difference between the two Z-Probe readings is what we need to set the offset as.
+
+Now say the difference was 9mm, Smoothie requires you to define its trigger point in terms of an offset of X/Y/Z from the origin (0/0/0), you will need to update the leveling-strategy.ZGrid-leveling.probe_ofsets X,Y,Z parameter, e.g.
+{{{
+leveling-strategy.ZGrid-leveling.probe_ofsets 0,0,9
 }}}
 (2) Issue the automated Z-Probe command
 {{{
