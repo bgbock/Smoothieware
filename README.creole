@@ -55,21 +55,21 @@ Probably the simplest one is to purchase a inductive probe, and use the lid of a
 
 Note: The probe I used was this one http://www.aliexpress.com/item/Inductive-Proximity-Sensor-Detection-Switch-LJ12A3-4-Z-BY-12MM-3-wire-Normal-Open-TK0372/1924491300.html 
 
-Using you favourite interface (I used Pronterface) and the 3D Printing head supplied with the FirePick, “Home” the unit and then jog the head down the Z-Axis until it just touches the glass covering the metal bed.  You should use the 0.1mm to get it so the tip exactly touches the glass.
+Using your favourite interface (I used Pronterface) and the 3D Printing head supplied with the FirePick, “Home” the unit and then jog the head down the Z-Axis until it just touches the glass covering the metal bed.  You should use the 0.1mm button to get it so the tip exactly touches the glass.
 
 Now carefully rotate the 3D print head so it is no longer held in place by the magnets and gently remove this and replace with the temporary Z-Probe you just made.
 
-At this point the LED on the top of the Z-Probe should be out and the Z-Probe tip should be able the glass as it is shorter that the 3D print head.
+At this point the LED on the top of the Z-Probe should be out and the Z-Probe tip should be above the glass as it is shorter that the 3D print head.
 
 Issue a 
 {{{
 M114
 }}}
-and note the Z height (This is the ‘zero’ height of the 3D print head.
+and note the Z height.
 
-Now jog the probe downwards using 0.1mm each time until the LED on the top of the Z-probe lights up.
+Now jog the probe downwards using 0.1mm button each time until the LED on the top of the Z-probe lights up.
 
-Job up and down a few times so you exactly determine the height the LED lights.
+Jog up and down a few times so you exactly determine the height the LED lights.
 
 Again issue a
 {{{
