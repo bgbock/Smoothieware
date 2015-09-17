@@ -79,7 +79,11 @@ and note the Z height.
 
 The difference between the two Z-Probe readings is what we need to set the offset as.
 
-Now say the difference was 9mm, Smoothie requires you to define its trigger point in terms of an offset of X/Y/Z from the origin (0/0/0), you will need to update the leveling-strategy.ZGrid-leveling.probe_ofsets X,Y,Z parameter, e.g.
+Now say the difference was 9mm, Smoothie requires you to define its trigger point in terms of an offset of X/Y/Z from the origin (0/0/0), you will need to update the leveling-strategy.ZGrid-leveling.probe_ofsets X,Y,Z parameter in the
+{{{
+config
+}}}
+file on the SD Card, e.g.
 {{{
 leveling-strategy.ZGrid-leveling.probe_ofsets 0,0,9
 }}}
