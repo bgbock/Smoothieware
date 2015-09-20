@@ -154,7 +154,11 @@ ZGrid
 }}}
 file on the SD card on the MotionBoard/Smoothie Board.
 
-Now, when ever you start the FPD, issue a M375 and this loads your compensation file from the SD card and applies the necessary corrections to Smoothie, and then away you go.
+Now, when ever you start the FPD, issue a 
+{{{
+M375
+}}}
+ and this loads your compensation file from the SD card and applies the necessary corrections to Smoothie, and then away you go.
 
 Using the above method I an getting rather good 3D printing, but I notice that downward movement in the Z axis still exhibits an increasing outward deviation as Z moves from say 100mm down to 0mm the further out the head is from X/Y = 0, i.e. towards the out parts of the bed, though this is substantially reduced by the above process, but is not quite perfect.
 ==3D Printing - Important hardware fix for the MotionBoard + EMC02
